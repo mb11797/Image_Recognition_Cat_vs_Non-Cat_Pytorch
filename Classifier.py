@@ -45,7 +45,7 @@ print('test_x_flatten.shape : ', test_x_flatten.shape)
 N = 209
 D_in = 12288
 H = 10
-D_out = 2
+D_out = 1
 
 y = train_set_y
 
@@ -55,10 +55,10 @@ y = train_set_y
 
 X = torch.from_numpy(train_x_flatten).float()
 
-# y = torch.from_numpy(y.T).long()
-# print (y.shape)
+y = torch.from_numpy(y.T).long()
+print (y.shape)
 
-y = torch.empty(209, dtype=torch.long).random_(1)
+# y = torch.empty(209, dtype=torch.long).random_(1)
 
 
 
@@ -90,11 +90,11 @@ for t in range(500):
     print('y_pred shape : ', y_pred.shape)
 
 
-    # for i in range(y_pred.shape[0]):
-    #     if y_pred[i] < 0.5:
-    #         y_pred[i] = 0
-    #     else :
-    #         y_pred[i] = 1
+    for i in range(y_pred.shape[0]):
+        if y_pred[i] < 0.5:
+            y_pred[i] = 0
+        elif y_pred[i] >= 0.5 :
+            y_pred[i] = 1
 
     loss = loss_fn(y_pred, y)
     print(t, loss.item())
