@@ -91,7 +91,7 @@ loss_fn = torch.nn.CrossEntropyLoss()
 
 learning_rate = 0.0075
 # TRAINING
-for t in range(2500):
+for t in range(200):
     y_pred = model(X)
     print ("break")
 
@@ -134,16 +134,20 @@ for t in range(2500):
 
 
 
-print(classes)
+# print(classes)
 
 # TESTING
-test_results = model(X_test)
-predicted = torch.max(test_results, 1)
+# test_results = model(X_test)
+# predicted = torch.max(test_results, 1)
+#
+# print(type(model.parameters()))
+#
+# print('predicted : ', (predicted))
+#
 
-print('predicted : ', (predicted))
 
 
-
+torch.save(model, 'model_best.pt')
 
 
 
