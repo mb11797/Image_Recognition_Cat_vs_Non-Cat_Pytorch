@@ -91,7 +91,7 @@ loss_fn = torch.nn.CrossEntropyLoss()
 
 learning_rate = 0.0075
 # TRAINING
-for t in range(200):
+for t in range(5000):
     y_pred = model(X)
     print ("break")
 
